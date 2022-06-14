@@ -20,9 +20,9 @@ let modifyFile3 = (val) => {
 // gunakan variabel file1, file2, dan file3
 const bacaData = (fn) => {
   const arr = [];
-  fs.readFile(file1, (err, data) => {
+  fs.readFile(file1,  (err, data) => {
     if (err) {
-      fn(err);
+      return fn(err);
     }
     let fetchDt = JSON.parse(data);
     let fetchMsg = fetchDt[0].message.split(" ");
@@ -30,7 +30,7 @@ const bacaData = (fn) => {
 
     fs.readFile(file2, (err, data) => {
       if (err) {
-        fn(err);
+        return fn(err);
       }
       let fetchDt = JSON.parse(data);
       let fetchMsg = fetchDt[0].message.split(" ");
@@ -38,7 +38,7 @@ const bacaData = (fn) => {
 
       fs.readFile(file3, (err, data) => {
         if (err) {
-          fn(err);
+          return fn(err);
         }
         let fetchDt = JSON.parse(data);
         let fetchMsg = fetchDt[0].message.split(" ");
