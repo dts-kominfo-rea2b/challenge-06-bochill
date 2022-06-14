@@ -18,7 +18,37 @@ let modifyFile3 = (val) => {
 
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
-const bacaData = null;
+const bacaData = (fn) => {
+  let arr = [];
+  fs.readFile(file1, (err, data) => {
+    if (err) {
+      throw err;
+    }
+    let fetchDt = JSON.parse(data);
+    let fetchMsg = fetchDt.message.split(" ");
+    arr.push(fetchMsg[1]);
+
+    fs.readFile(file2, (err, data) => {
+      if (err) {
+        throw err;
+      }
+      let fetchDt = JSON.parse(data);
+      let fetchMsg = fetchDt.message.split(" ");
+      arr.push(fetchMsg[1]);
+
+      fs.readFile(file3, (err, data) => {
+        if (err) {
+          throw err;
+        }
+        let fetchDt = JSON.parse(data);
+        let fetchMsg = fetchDt.message.split(" ");
+        arr.push(fetchMsg[1]);
+
+        return fn(err, arr);
+      });
+    });
+  });
+};
 
 // ! JANGAN DIMODIFIKASI
 module.exports = {
