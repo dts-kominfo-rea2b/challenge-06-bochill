@@ -19,7 +19,7 @@ let modifyFile3 = (val) => {
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
 const bacaData = (fn) => {
-  let arr = [];
+  const arr = [];
   fs.readFile(file1, (err, data) => {
     if (err) {
       throw err;
