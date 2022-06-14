@@ -25,7 +25,7 @@ const bacaData = (fn) => {
       throw err;
     }
     let fetchDt = JSON.parse(data);
-    let fetchMsg = fetchDt.message.split(" ");
+    let fetchMsg = fetchDt[0].message.split(" ");
     arr.push(fetchMsg[1]);
 
     fs.readFile(file2, (err, data) => {
@@ -33,7 +33,7 @@ const bacaData = (fn) => {
         throw err;
       }
       let fetchDt = JSON.parse(data);
-      let fetchMsg = fetchDt.message.split(" ");
+      let fetchMsg = fetchDt[0].message.split(" ");
       arr.push(fetchMsg[1]);
 
       fs.readFile(file3, (err, data) => {
@@ -41,7 +41,7 @@ const bacaData = (fn) => {
           throw err;
         }
         let fetchDt = JSON.parse(data);
-        let fetchMsg = fetchDt.message.split(" ");
+        let fetchMsg = fetchDt[0].message.split(" ");
         arr.push(fetchMsg[1]);
 
         return fn(err, arr);
